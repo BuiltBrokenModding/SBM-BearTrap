@@ -9,17 +9,21 @@ import net.minecraft.block.state.IBlockState;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
+import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
+import net.spectre.beartrap.Traps;
 import net.spectre.beartrap.tileentity.TileEntityBearTrap;
 
 public class BlockBearTrap extends Block{
 
 	public static PropertyBool OPEN = PropertyBool.create("open");
+	public static final AxisAlignedBB BB = new AxisAlignedBB(0, 0, 0, 1, 0.1, 1);
 	
 	public BlockBearTrap() {
 		super(Material.IRON);
@@ -40,7 +44,8 @@ public class BlockBearTrap extends Block{
 
 	@Override
 	public IBlockState getActualState(IBlockState state, IBlockAccess worldIn, BlockPos pos) {
-		// TODO Auto-generated method stub
+		TileEntityBearTrap trap = (TileEntityBearTrap)worldIn.getTileEntity(pos);
+		if(trap != null) return state.withProperty(OPEN, trap.isSet());
 		return super.getActualState(state, worldIn, pos);
 	}
 
@@ -70,13 +75,43 @@ public class BlockBearTrap extends Block{
 	}
 
 	@Override
-	public void onEntityWalk(World worldIn, BlockPos pos, Entity entityIn) {
-		super.onEntityWalk(worldIn, pos, entityIn);
+	public boolean isNormalCube(IBlockState state, IBlockAccess world, BlockPos pos) {
+		return false;
 	}
 
 	@Override
-	public boolean isNormalCube(IBlockState state, IBlockAccess world, BlockPos pos) {
-		return false;
+	public AxisAlignedBB getCollisionBoundingBox(IBlockState blockState, IBlockAccess worldIn, BlockPos pos) {
+		return BB;
+	}
+
+	//So mobs will step on it.
+	@Override
+	public boolean isPassable(IBlockAccess worldIn, BlockPos pos) {
+		return true;
+	}
+
+	@Override
+	public AxisAlignedBB getBoundingBox(IBlockState state, IBlockAccess source, BlockPos pos) {
+		return BB;
+	}
+
+	@Override
+	public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
+		TileEntityBearTrap trap = (TileEntityBearTrap)worldIn.getTileEntity(pos);
+		if(trap != null && Traps.STICKS.contains(playerIn.getHeldItem(hand).getItem().getRegistryName())) {
+			trap.setSet(true);
+		}
+		return true;
+	}
+
+	//Traps an entity when they step on it
+	@Override
+	public void onEntityCollision(World worldIn, BlockPos pos, IBlockState state, Entity entityIn) {
+		TileEntityBearTrap trap = (TileEntityBearTrap)worldIn.getTileEntity(pos);
+		if(trap != null && trap.isSet() && trap.getCooldown() <= 0) {
+			trap.setTrappedEntity(entityIn);
+		}
+		super.onEntityCollision(worldIn, pos, state, entityIn);
 	}
 
 }
