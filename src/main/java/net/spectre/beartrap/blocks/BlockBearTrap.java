@@ -43,13 +43,6 @@ public class BlockBearTrap extends Block{
 	}
 
 	@Override
-	public IBlockState getActualState(IBlockState state, IBlockAccess worldIn, BlockPos pos) {
-		TileEntityBearTrap trap = (TileEntityBearTrap)worldIn.getTileEntity(pos);
-		if(trap != null) return state.withProperty(OPEN, trap.isSet());
-		return super.getActualState(state, worldIn, pos);
-	}
-
-	@Override
 	protected BlockStateContainer createBlockState() {
 		return new BlockStateContainer(this, BlockHorizontal.FACING, OPEN);
 	}
@@ -75,7 +68,7 @@ public class BlockBearTrap extends Block{
 	}
 
 	@Override
-	public boolean isNormalCube(IBlockState state, IBlockAccess world, BlockPos pos) {
+	public boolean isFullCube(IBlockState state) {
 		return false;
 	}
 

@@ -36,7 +36,6 @@ public class BBlocks {
 	public static void registerBlocks(RegistryEvent.Register<Block> event) {
 		for(Block block : BLOCKS) {
 			event.getRegistry().register(block);
-			System.out.println("Registering: " + block);
 		}
 	}
 	

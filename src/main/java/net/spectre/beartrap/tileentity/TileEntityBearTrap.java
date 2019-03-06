@@ -2,9 +2,12 @@ package net.spectre.beartrap.tileentity;
 
 import java.util.UUID;
 
+import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.Entity;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ITickable;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.World;
 import net.minecraft.world.WorldServer;
 import net.spectre.beartrap.blocks.BlockBearTrap;
 
@@ -50,5 +53,10 @@ public class TileEntityBearTrap extends TileEntity implements ITickable{
 
 	public int getCooldown() {
 		return this.cooldown;
+	}
+
+	@Override
+	public boolean shouldRefresh(World world, BlockPos pos, IBlockState oldState, IBlockState newState) {
+		return !(newState.getBlock() instanceof BlockBearTrap);
 	}
 }

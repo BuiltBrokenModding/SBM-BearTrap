@@ -4,10 +4,11 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraftforge.client.event.InputUpdateEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+import net.minecraftforge.fml.relauncher.Side;
 import net.spectre.beartrap.Traps;
 import net.spectre.beartrap.tileentity.TileEntityBearTrap;
 
-@Mod.EventBusSubscriber(modid = Traps.MODID)
+@Mod.EventBusSubscriber(modid = Traps.MODID, value = Side.CLIENT)
 public class EventHandler {
 	
 	@SubscribeEvent

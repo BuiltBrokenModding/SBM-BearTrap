@@ -41,12 +41,6 @@ public class Traps
         GameRegistry.registerTileEntity(TileEntityBearTrap.class, new ResourceLocation(MODID, "bear_trap"));
         readConfig(event.getModConfigurationDirectory());
     }
-
-    @EventHandler
-    public void init(FMLInitializationEvent event)
-    {
-        
-    }
     
     public static void readConfig(File f) {
     	f = new File(f.getPath() + "/bearTrapPryItems.json");
@@ -71,8 +65,9 @@ public class Traps
     			STICKS.add(Items.STICK.getRegistryName());
     		}
     	}
-    	catch(Exception e) {}
-    	System.out.println(f);
+    	catch(Exception e) {
+    		e.printStackTrace();
+    	}
     }
     
 }
