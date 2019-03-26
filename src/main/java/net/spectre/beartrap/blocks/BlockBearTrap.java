@@ -17,6 +17,7 @@ import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
+import net.spectre.beartrap.BearConfig;
 import net.spectre.beartrap.Traps;
 import net.spectre.beartrap.tileentity.TileEntityBearTrap;
 
@@ -29,7 +30,7 @@ public class BlockBearTrap extends Block{
 		super(Material.IRON);
 		this.setCreativeTab(CreativeTabs.COMBAT);
 		this.setDefaultState(this.getDefaultState().withProperty(OPEN, true));
-		this.setHardness(5F);
+		this.setHardness(BearConfig.hardness);
 	}
 
 	@Override
@@ -101,7 +102,7 @@ public class BlockBearTrap extends Block{
 	@Override
 	public void onEntityCollision(World worldIn, BlockPos pos, IBlockState state, Entity entityIn) {
 		TileEntityBearTrap trap = (TileEntityBearTrap)worldIn.getTileEntity(pos);
-		if(trap != null && trap.isSet() && trap.getCooldown() <= 0) {
+		if(BearConfig.canTrap(entityIn) && trap != null && trap.isSet() && trap.getCooldown() <= 0) {
 			trap.setTrappedEntity(entityIn);
 		}
 		super.onEntityCollision(worldIn, pos, state, entityIn);

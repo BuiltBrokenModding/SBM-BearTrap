@@ -1,0 +1,12 @@
+{
+    "trap":{
+        "sounds":[
+            "beartrap:trap"
+        ]
+    },
+    "reset":{
+        "sounds":[
+            "beartrap:reset"
+        ]
+    }
+}
