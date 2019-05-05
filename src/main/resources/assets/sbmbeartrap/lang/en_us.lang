@@ -1,0 +1,9 @@
+tile.sbmbeartrap:trap.name=Bear Trap
+
+config.sbmbeartrap:title=Bear Trap Config
+config.sbmbeartrap:teleport=Allow Teleportation
+config.sbmbeartrap:hardness=Hardness
+config.sbmbeartrap:trapped.timer=Escape Timer
+config.sbmbeartrap:blacklist.entity=Entity Blacklist
+config.sbmbeartrap:supported.sticks=Supported Sticks
+config.sbmbeartrap:support.sticks.ore=Use Ore-Named Sticks

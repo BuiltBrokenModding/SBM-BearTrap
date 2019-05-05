@@ -1,12 +1,12 @@
 {
     "trap":{
         "sounds":[
-            "beartrap:trap"
+            "sbmbeartrap:trap"
         ]
     },
     "reset":{
         "sounds":[
-            "beartrap:reset"
+            "sbmbeartrap:reset"
         ]
     }
 }

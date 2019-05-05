@@ -1,4 +1,0 @@
-tile.beartrap.bear_trap.name=Bear Trap
-
-config.beartrap.teleport=Allow players to teleport out of traps?
-config.beartrap.hardness=Sets the hardness of the trap block

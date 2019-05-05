@@ -1,0 +1,43 @@
+{
+  "forge_marker": 1,
+  "defaults": {
+    "model": "sbmbeartrap:trap_closed",
+    "textures": {
+      "0": "blocks/anvil_base",
+      "particle": "blocks/anvil_base"
+    }
+  },
+  "variants": {
+    "inventory": [
+      {}
+    ],
+    "normal": [
+      {}
+    ],
+    "open": {
+      "closed": {
+        "model": "sbmbeartrap:trap_closed"
+      },
+      "open": {
+        "model": "sbmbeartrap:trap_open"
+      },
+      "open_set": {
+        "model": "sbmbeartrap:trap_open_set"
+      }
+    },
+    "facing": {
+      "north": {
+        "y": 90
+      },
+      "east": {
+        "y": 0
+      },
+      "west": {
+        "y": 0
+      },
+      "south": {
+        "y": 90
+      }
+    }
+  }
+}
