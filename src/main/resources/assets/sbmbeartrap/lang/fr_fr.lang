@@ -1,0 +1,9 @@
+tile.sbmbeartrap:trap.name=Piège à ours
+
+config.sbmbeartrap:title=Configuration de Bear Trap
+config.sbmbeartrap:teleport=Permettre la téléportation
+config.sbmbeartrap:hardness=Dureté
+config.sbmbeartrap:trapped.timer=Temps d'échappe
+config.sbmbeartrap:blacklist.entity=Liste noire d'entités
+config.sbmbeartrap:supported.sticks=Bâtons permis
+config.sbmbeartrap:support.sticks.ore=Utiliser les bâtons par Ore Dictionary
