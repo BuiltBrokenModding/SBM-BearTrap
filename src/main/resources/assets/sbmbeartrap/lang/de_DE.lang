@@ -1,0 +1,10 @@
+
+tile.sbmbeartrap:trap.name=Bärenfalle
+
+config.sbmbeartrap:title=Bärenfallen-Konfiguration
+config.sbmbeartrap:teleport=Teleportation erlauben
+config.sbmbeartrap:hardness=Härte
+config.sbmbeartrap:trapped.timer=Entkommenstimer
+config.sbmbeartrap:blacklist.entity=Entity Blacklist
+config.sbmbeartrap:supported.sticks=Unterstützte Stöcke
+config.sbmbeartrap:support.sticks.ore=Benutze Erz-benannte Stöcke
